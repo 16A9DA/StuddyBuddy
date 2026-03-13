@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="room-layout">
+
+    <div class="room-sidebar">
+        <div class="participants">
+            <div class="participants__title">Participants</div>
+            
+            {% for user in participants %}
+            <div class="participants__item">
+                
+                <span class="participants__name">{{ user.username }}</span> 
+                
+                
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+
+        <div class="room-main">
+        <div class="room-header">
+            <div class="room-header__badge">Room</div>
+            <h1 class="room-header__title">{{ rooms.name }}</h1>
+        </div>
+
+        <p class="room-description">{{ rooms.description }}</p>
+
+        <div class="conversation">
+            <div class="conversation__title">Conversations</div>
+            {% for message in messages %}
+            <div class="conversation__message">
+                <small class="conversation__meta">
+                    @{{ message.user }}
+                    <span class="conversation__time">{{ message.created|timesince }} ago</span>
+                </small>
+                <p class="conversation__body">{{ message.body }}</p>
+                {% if request.user == message.user %}
+                <div class="message-actions">
+                    <a href="{% url 'deleteMessage' message.id %}">Delete</a> 
+                    <a href="{% url 'update_message' message.id %}">Edit</a>
+                </div>
+            {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if request.user.is_authenticated %}
+        <div class="message-form">
+            <form action="" method="post" class="message-form__input-wrap">
+                {% csrf_token %}
+                <input type="text" name="body" placeholder="Write your message…">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

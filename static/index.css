@@ -1,0 +1,187 @@
+/* ─── Index Header ─── */
+.index-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.index-header h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    letter-spacing: -0.02em;
+}
+
+.room-count {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+}
+
+/* ─── Buttons ─── */
+.btn-create {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-on-accent);
+    background: var(--accent);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background var(--transition), box-shadow var(--transition);
+    white-space: nowrap;
+}
+
+.btn-create:hover {
+    background: var(--accent-hover);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-create::before { content: '+'; font-size: 1.1rem; font-weight: 400; }
+
+.btn-edit, .btn-delete {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background var(--transition), color var(--transition);
+}
+
+.btn-edit {
+    color: var(--text-muted);
+    background: transparent;
+}
+
+.btn-edit:hover {
+    background: var(--surface-2);
+    color: var(--text-bright);
+}
+
+.btn-delete {
+    color: var(--text-muted);
+    background: transparent;
+}
+
+.btn-delete:hover {
+    background: var(--danger-soft);
+    color: var(--danger);
+}
+
+/* ─── Room List ─── */
+.room-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* ─── Room Card ─── */
+.room-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    animation: fadeUp 0.3s ease both;
+}
+
+.room-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-md);
+}
+
+.room-card__left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.room-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.room-card__id {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-faint);
+    letter-spacing: 0.03em;
+}
+
+.room-card__host {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent-text);
+    text-decoration: none;
+    transition: opacity var(--transition);
+}
+
+.room-card__host:hover { opacity: 0.75; }
+
+.room-card__name {
+    font-size: 0.975rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color var(--transition);
+}
+
+.room-card__name:hover { color: var(--accent-text); }
+
+.room-card__topic {
+    font-size: 0.775rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.room-card__topic::before {
+    content: '#';
+    color: var(--text-faint);
+    font-weight: 500;
+}
+
+.room-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.room-card:hover .room-card__actions { opacity: 1; }
+
+.room-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+    background: var(--surface-2);
+}
+
+@media (max-width: 600px) {
+    .room-card { flex-direction: column; align-items: flex-start; }
+    .room-card__actions { opacity: 1; }
+}

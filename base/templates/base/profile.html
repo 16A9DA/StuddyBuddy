@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="profile-wrapper">
+
+    <div class="profile-header">
+        <!-- Add profile pic -->
+        <div class="profile-avatar">{{ user.username }}</div>
+        <div class="profile-info">
+            <div class="profile-badge">User Profile</div>
+            <h1 class="profile-username">@{{ user.username }}</h1>
+        </div>
+        {% if request.user == user %}
+        <a href="{% url 'updateUser' %}" class="profile-edit-btn">Edit Profile</a>
+        {% endif %}
+    </div>
+
+    <div class="profile-section">
+        <div class="profile-section__title">Rooms Created</div>
+        {% for room in rooms %}
+        <div class="profile-room">
+            <span class="profile-room__topic">{{ room.topic }}</span>
+            <a href="/room/{{ room.id }}" class="profile-room__name">{{ room.name }}</a>
+        </div>
+        {% empty %}
+        <p class="profile-empty">No rooms created yet.</p>
+        {% endfor %}
+    </div>
+
+    
+
+</div>
+
+{% endblock %}

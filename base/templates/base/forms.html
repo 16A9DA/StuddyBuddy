@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="form-wrapper">
+    <div class="form-card">
+        {% if type != 'message' %}
+        <h2 class="form-title">Create Room</h2>
+        <p class="form-subtitle">Fill in the information below to continue.</p>
+        {% else %}
+        <h2 class="form-title">Edit Message</h2>
+        <p class="form-subtitle">Add or remove to submit your edited message.</p>
+        {% endif %}
+
+        <form action="" method="post" class="styled-form">
+            {% csrf_token %}
+            <p>
+                <label>Topic</label>
+                    <input required type="text" value="{{room.topic.name}}" name="new_topic" placeholder="Type a new topic…" list="topic-list">
+                    <datalist id="topic-list">
+                        {% for topic in topics %}
+                        <option value="{{ topic.name }}">
+                        {% endfor %}
+                    </datalist>
+            </p>
+            
+
+            <p>
+                <label>Room Name</label>
+                <input type="text" value="{{room.name}}" name="name" placeholder="Enter room name…">
+            </p>
+
+            <p>
+                <label>Description</label>
+                <textarea value="{{room.description}}" name="description" placeholder="What is this room about…">{{room.description}}   </textarea>
+            </p>
+
+            <input type="submit" value="Submit" class="btn-submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

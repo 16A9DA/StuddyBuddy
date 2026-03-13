@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+
+        <div class="auth-header">
+            <div class="auth-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                </svg>
+            </div>
+            {% if page == 'login' %}
+            <h2 class="auth-title">Welcome back</h2>
+            <p class="auth-subtitle">Log in to your StudyBuddy account</p>
+            {% else %}
+            <h2 class="auth-title">Welcome to StudyBuddy</h2>
+            <p class="auth-subtitle">Register to access site</p>
+            {% endif %}
+        </div>
+
+
+        {% if messages %}
+        <div class="auth-messages">
+            {% for message in messages %}
+            <div class="auth-alert">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
+                </svg>
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if page == 'login'%}
+        <form method="POST" action="" class="auth-form">
+            {% csrf_token %}
+
+            <div class="auth-field">
+                <label for="username">Username</label>
+                <div class="auth-input-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
+                    </svg>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="username">
+                </div>
+            </div>
+
+            <div class="auth-field">
+                <label for="password">Password</label>
+                <div class="auth-input-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/>
+                    </svg>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password">
+                </div>
+            </div>
+
+            <input type="submit" value="Log In" class="btn-submit">
+        </form>
+        <div>
+            Haven't signed up yet ?
+            <a href="{% url 'register' %}">Sign up </a>
+        </div>
+    </div>
+    {% else %}
+    <div>
+        <form action="" method="post" >
+            {% csrf_token %}
+            {{form.as_p}} 
+            <input type="submit" name="register" value="Register" id="">
+        </form>
+        <div>
+            Already registered ?
+            <a href="{% url 'login'%}">Login</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

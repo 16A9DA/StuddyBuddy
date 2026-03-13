@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="layout">
+
+    <div class="sidebar">
+        <p class="sidebar__title">Browse Topics</p>
+
+        <div class="sidebar__all">
+            <a href="{% url 'Home' %}">All</a>
+        </div>
+
+        <div class="sidebar__list">
+            {% for topic in topics %}
+            <div class="sidebar__item">
+                <a href="{% url 'Home' %}?q={{ topic.name }}">{{ topic.name }}</a>
+            </div>
+
+            {% endfor %}
+        </div>
+        
+    </div>
+
+    <div class="layout__content">
+
+        <div class="index-header">
+            <h2>Study Rooms</h2>
+            <a href="{% url 'createRoom' %}" class="btn-create">Create Room</a>
+        </div>
+
+        <div class="room-count">
+            {{room_count}} Rooms Available
+        </div>
+          
+        <div class="room-list">
+            {% for room in rooms %}
+            <div class="room-card">
+
+                <div class="room-card__left">
+                    <div class="room-card__meta">
+                        <span class="room-card__id">#{{ room.id }}</span>
+                        <a href = '{% url "userProfile" room.host %}' class="room-card__host">@{{ room.host}}</a>
+                    </div>
+                    <a href="/room/{{ room.id }}" class="room-card__name">{{ room.name }}</a>
+                    <span class="room-card__topic">{{ room.topic }}</span>
+                </div>
+
+                {% if request.user == room.host %}
+                <div class="room-card__actions">
+                    
+                    <a href="{% url 'updateRoom' room.id %}" class="btn-edit">Edit</a>
+                    <a href="{% url 'deleteRoom' room.id %}" class="btn-delete">Delete</a>
+                    
+                </div>
+                {% endif %}
+
+            </div>
+            {% empty %}
+            <div class="room-empty">No rooms yet — create one to get started!</div>
+            {% endfor %}
+        
+        </div>
+    </div>
+
+</div>
+
+{% endblock  %}
