@@ -42,33 +42,20 @@ git clone https://github.com/16A9DA/studybuddy.git
 cd studybuddy
 ```
 
-### 2. Create and activate a virtual environment
 
-```bash
-# Using conda
-conda create -n studybuddy python=3.12
-conda activate studybuddy
-
-# Or using venv
-python -m venv venv
-source venv/bin/activate        # Mac/Linux
-venv\Scripts\activate           # Windows
-```
-
-### 3. Install dependencies
+### 2. Install dependencies
 
 ```bash
 pip install django python-dotenv
 ```
 
-
-### 4. Apply migrations
+### 3. Apply migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### 5. Create a superuser (optional)
+### 4. Create a superuser (optional)
 
 ```bash
 python manage.py createsuperuser
