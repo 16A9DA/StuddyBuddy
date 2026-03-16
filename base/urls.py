@@ -13,7 +13,7 @@ urlpatterns = [
     path("createRoom/",views.create_room,name="createRoom"),
     path("updateRoom/<int:pk>/",views.update_room,name='updateRoom'),
     path("deleteRoom/<int:pk>/",views.delete_room,name="deleteRoom"),
-    path('userProfile/<str:username>',views.user_profile,name='userProfile'),
+    path('userProfile/<int:pk>',views.user_profile,name='userProfile'),
     path('updateProfile/',views.update_user,name='updateUser')
     # make update user settings an option
 ]

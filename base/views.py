@@ -1,13 +1,14 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Rooms,Topic,Message
-from .forms import RoomForm,MessageForm
+from .forms import RoomForm,MessageForm,UserForm
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+
 # Create your views here.
 
 
@@ -181,8 +182,8 @@ def update_message(request,pk):
 
 
 
-def user_profile(request,username):
-   profile_user = User.objects.get(username=username)
+def user_profile(request,pk):
+   profile_user = User.objects.get(id=pk)
    room = profile_user.rooms_set.all()
    topic = Topic.objects.all()
    content = {'user': profile_user,'rooms':room,'topic':topic}
@@ -191,5 +192,13 @@ def user_profile(request,username):
 
 @login_required(login_url='login')
 def update_user(request):
-   return render(request,'base/updateUser.html')
+   user  = request.user
+   form = UserForm(instance=user)
+   if request.method == 'POST':
+      form = UserForm(request.POST,instance=user)
+      if form.is_valid():
+         form.save()
+         return redirect('userProfile',pk=user.id)
+         
+   return render(request,'base/updateUser.html',{"form":form})
 

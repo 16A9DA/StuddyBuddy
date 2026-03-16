@@ -1,5 +1,3 @@
-
-
 {% extends 'main.html' %}
 
 {% block content %}
@@ -12,29 +10,22 @@
         <form action="" method="post" class="styled-form" enctype="multipart/form-data">
             {% csrf_token %}
 
+            {% for field in form %}
             <p>
-                <label>Username</label>
-                <input  type="text"  name="username" value="{{ request.user.username }}" placeholder="Enter username…">
+                <label>{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <span style="color:var(--danger); font-size:0.8rem;">{{ field.errors }}</span>
+                {% endif %}
             </p>
+            {% endfor %}
 
-            <p>
-                <label>First Name</label>
-                <input type="text" name="first_name" value="{{ request.user.first_name }}" placeholder="Enter first name…">
-            </p>
+            <div class="delete-actions">
+                <a href="{% url 'userProfile' request.user.id %}" class="btn-back">Cancel</a>
+                <button type="submit" class="btn-submit">Save Changes</button>
+            </div>
 
-            <p>
-                <label>Last Name</label>
-                <input type="text" name="last_name" value="{{ request.user.last_name }}" placeholder="Enter last name…">
-            </p>
-
-            <p>
-                <label>Email</label>
-                <input type="email" name="email" value="{{ request.user.email }}" placeholder="Enter email…">
-            </p>
-
-            <input type="submit" value="Save Changes" class="btn-submit">
         </form>
-
     </div>
 </div>
 
