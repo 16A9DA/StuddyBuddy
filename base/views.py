@@ -183,7 +183,7 @@ def update_message(request,pk):
 
 
 def user_profile(request,pk):
-   profile_user = User.objects.get(id=pk)
+   profile_user = User.objects.get(id = pk)
    room = profile_user.rooms_set.all()
    topic = Topic.objects.all()
    content = {'user': profile_user,'rooms':room,'topic':topic}
@@ -199,6 +199,5 @@ def update_user(request):
       if form.is_valid():
          form.save()
          return redirect('userProfile',pk=user.id)
-         
    return render(request,'base/updateUser.html',{"form":form})
 
