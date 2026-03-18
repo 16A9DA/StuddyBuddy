@@ -5,3 +5,4 @@ static_root/
 __pycache__/
 **/__pycache__/
 media/
+.env
