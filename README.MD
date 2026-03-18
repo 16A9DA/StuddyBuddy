@@ -25,7 +25,7 @@ A collaborative study platform where students can create topic-based study rooms
 | Backend | Python 3.12, Django 6.0 |
 | Database | SQLite |
 | Frontend | HTML, CSS (custom), Django Templates |
-| Authentication | Custom User model (AbstractUser) — email & password login |
+| Authentication | Custom User model (AbstractUser): email & password login |
 | API | Django REST Framework (DRF) |
 | Media | Pillow — avatar image uploads |
 | Environment | Anaconda (conda env: unity) |
@@ -42,7 +42,7 @@ A collaborative study platform where students can create topic-based study rooms
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/studybuddy.git
+git clone https://github.com/16A9DA/studybuddy.git
 cd studybuddy
 ```
 
@@ -62,42 +62,22 @@ venv\Scripts\activate           # Windows
 ### 3. Install dependencies
 
 ```bash
-pip install django python-dotenv djangorestframework Pillow
+pip install django djangorestframework Pillow
 ```
 
-### 4. Set up environment variables
-
-Create a `.env` file in the project root:
-
-```env
-SECRET_KEY=your-secret-key-here
-DEBUG=True
-```
-
-Update `settings.py` to load from `.env`:
-
-```python
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-```
-
-### 5. Apply migrations
+### 4. Apply migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### 6. Create a superuser (optional)
+### 5. Create a superuser (optional)
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### 7. Run the development server
+### 6. Run the development server
 
 ```bash
 python manage.py runserver
@@ -128,7 +108,6 @@ StudyBuddy/
 ├── StudyBuddy/             # Project settings
 │   ├── settings.py
 │   └── urls.py
-├── .env                    # Environment variables (not committed)
 ├── .gitignore
 └── manage.py
 ```
