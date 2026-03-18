@@ -2,3 +2,8 @@ db.sqlite3
 .DS_Store
 staticfiles/
 static_root/
+__pycache__/
+base/pycache__/
+StudyBuddy/pycache__/
+api/pycache__/
+StudyBuddy/StudyBuddy/pycache__/
