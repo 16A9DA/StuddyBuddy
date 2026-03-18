@@ -40,6 +40,7 @@
                 <div class="room-card__left">
                     <div class="room-card__meta">
                         <span class="room-card__id">#{{ room.id }}</span>
+                        <img src="{{room.host.avatar.url}}" alt="User profile picture/avatar" class="room-card__avatar">
                         <a href='{% url "userProfile" room.id %}' class="room-card__host">@{{ room.host}}</a>
                     </div>
                     <a href="/room/{{ room.id }}" class="room-card__name">{{ room.name }}</a>
