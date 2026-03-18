@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-
+#inherit from Abstract class to create custom user model
 class User(AbstractUser):
     username = models.CharField(max_length=200, unique=True)
     name = models.CharField(max_length=200, null=True)
@@ -11,6 +11,8 @@ class User(AbstractUser):
     bio = models.TextField(null=True, blank=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+    # need to install pillow for this field to work
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True, default="avatars/images.jpeg")
 
     def __str__(self):
         return self.username
@@ -25,7 +27,7 @@ class Topic(models.Model):
         return self.name
 
 
-
+#Room model, 
 class Rooms(models.Model):
     host = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
     topic = models.ForeignKey(Topic,models.SET_NULL,null=True)
@@ -37,7 +39,7 @@ class Rooms(models.Model):
 
     class Meta:
         ordering = ['-updated','-created']
-
+#shows in admin panel
     def __str__(self):
         return self.name
 
