@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'base.apps.BaseConfig',
     'rest_framework',
+    'axes'
 ]
 
 
@@ -51,6 +52,7 @@ AUTH_USER_MODEL = 'base.User'
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'axes.middleware.AxesMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -139,3 +141,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+AXES_FAILURE_LIMIT = 3 # Number of allowed login attempts before lockout
+AXES_COOLOFF_TIME = 1  # in hours
+AXES_LOCKOUT_PARAMETERS = ["ip_address"]  # Lockout based on username and IP address
