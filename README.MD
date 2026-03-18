@@ -6,15 +6,15 @@ A collaborative study platform where students can create topic-based study rooms
 
 ## Features
 
-- **Study Rooms** — Create, edit, and delete topic-based rooms for focused discussion
-- **Real-time Messaging** — Send, edit, and delete messages within any room
-- **Topic Filtering** — Browse and filter rooms by topic from the sidebar
-- **User Profiles** — View any user's profile, their created rooms, and topics
-- **Authentication** — Register and log in using email and password via a custom user model
-- **Avatar Support** — Upload and display profile pictures
-- **REST API** — Expose room data via a dedicated API using Django REST Framework
-- **Access Control** — Only room hosts can edit or delete their rooms; only message authors can edit or delete their messages
-- **Responsive Design** — Clean, minimal UI with light and dark mode support
+- **Study Rooms**: Create, edit, and delete topic-based rooms for focused discussion
+- **Real-time Messaging**:  Send, edit, and delete messages within any room
+- **Topic Filtering**: Browse and filter rooms by topic from the sidebar
+- **User Profiles**:  View any user's profile, their created rooms, and topics
+- **Authentication**: Register and log in using email and password via a custom user model
+- **Avatar Support**: Upload and display profile pictures
+- **REST API**: Expose room data via a dedicated API using Django REST Framework
+- **Access Control**: Only room hosts can edit or delete their rooms; only message authors can edit or delete their messages
+- **Responsive Design**: Clean, minimal UI with light and dark mode support
 
 ---
 
@@ -27,7 +27,7 @@ A collaborative study platform where students can create topic-based study rooms
 | Frontend | HTML, CSS (custom), Django Templates |
 | Authentication | Custom User model (AbstractUser): email & password login |
 | API | Django REST Framework (DRF) |
-| Media | Pillow — avatar image uploads |
+| Media | Pillow : avatar image uploads |
 | Environment | Anaconda (conda env: unity) |
 
 ---
