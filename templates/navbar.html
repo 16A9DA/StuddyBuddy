@@ -19,8 +19,14 @@
         <div class="navbar__right">
             {% if request.user.is_authenticated %}
             <div class="navbar__user">
-                <!-- Add profile pic -->
-                <div class="navbar__greeting">Hello, {{ request.user.username }}</div>
+                <div class="navbar__greeting">
+                    {% if request.user.avatar %}
+                    <img src="{{ request.user.avatar.url }}" alt="{{ request.user.username }}" class="navbar__avatar">
+                    {% else %}
+                    <div class="navbar__avatar-placeholder">{{ request.user.username|first|upper }}</div>
+                    {% endif %}
+                    {{ request.user.username }}
+                </div>
                 <div class="navbar__dropdown">
                     <a href="{% url 'userProfile' request.user.id %}">Profile</a>
                     <a href="{% url 'updateUser' %}">Settings</a>
