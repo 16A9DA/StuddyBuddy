@@ -168,6 +168,12 @@ class User(AbstractUser):
 
 ---
 
+## Preview 
+
+https://studdybuddy-production-a2ca.up.railway.app/
+
+---
+
 ## License
 
 This project is for educational purposes.
