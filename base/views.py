@@ -1,9 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Rooms,Topic,Message
+from .models import Rooms,Topic,Message,User
 from .forms import RoomForm,MessageForm,UserForm
 from django.db.models import Q
-from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -158,7 +157,7 @@ def delete_message(request,pk):
    
    if request.method == 'POST':
       message.delete()
-      return redirect('Home')
+      return redirect('room',pk=message.room.id)
    return render(request,"base/delete.html",{'obj':message})
 
 
