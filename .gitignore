@@ -3,7 +3,7 @@ db.sqlite3
 staticfiles/
 static_root/
 __pycache__/
-base/pycache__/
-StudyBuddy/pycache__/
-api/pycache__/
-StudyBuddy/StudyBuddy/pycache__/
+base/__pycache__/
+StudyBuddy/__pycache__/
+api/__pycache__/
+StudyBuddy/StudyBuddy/__pycache__/
