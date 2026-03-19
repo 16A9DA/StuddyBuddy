@@ -15,15 +15,15 @@ def loginRegister(request):
    if request.user.is_authenticated:
       return redirect('Home')
    if request.method == 'POST':
-      email = request.POST.get('email').lower()
+      email = request.POST.get('email')
       password = request.POST.get('password')
       try:
          user = User.objects.get(email=email)
       except:
          messages.error(request,"Email does not exist")
+         return render(request, 'base/loginRegister.html', {'page': page})
 
-      
-      user = authenticate(request,email=email,password=password)
+      user = authenticate(request,username = user.username,password=password)
       if user is not None:
          login(request,user)
          return redirect('Home')
@@ -40,18 +40,19 @@ def logoutUser(request):
 
 
 def registerUser(request):
-   forms = MyUserCreationForm()
+   form = MyUserCreationForm()
    if request.method == 'POST':
-      forms = MyUserCreationForm(request.POST)
-      if forms.is_valid():
-         user = forms.save(commit=False)
-         user.username = user.username.lower()
+      form = MyUserCreationForm(request.POST)
+      if form.is_valid():
+         user = form.save(commit=False)
+         user.email = user.email
+         user.username = user.username
          user.save()
-         login(request,user)
+         login(request,user,backend='django.contrib.auth.backends.ModelBackend')
          return redirect('Home')
       else:
          messages.error(request,'An error occured during registration, try again !')
-   return render(request,'base/loginRegister.html',{"form":forms})
+   return render(request,'base/loginRegister.html',{"form":form})
 
 
 def home(request):
