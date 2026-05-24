@@ -170,8 +170,7 @@ class User(AbstractUser):
 
 ## Preview 
 
-https://studdybuddy-production-a2ca.up.railway.app/
-
+https://studdybuddy-np1y.onrender.com/
 ---
 
 ## License
