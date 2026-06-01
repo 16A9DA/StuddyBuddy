@@ -32,7 +32,7 @@ A collaborative study platform where students can create topic-based study rooms
 
 ---
 
-## Installation & Setup
+## Installation & Setup (For docker skip to next step)
 
 ### Prerequisites
 
@@ -86,6 +86,23 @@ python manage.py runserver
 Visit `http://127.0.0.1:8000` in your browser.
 
 ---
+
+## Running with Docker
+
+Pull and run the app with a single command:
+
+```bash
+docker run -d \
+  -p 8000:8000 \
+  -e SECRET_KEY=yoursecretkey \
+  -e DEBUG=False \
+  pa9da/studybuddy
+```
+
+Then open your browser at:
+http://localhost:8000
+
+
 
 ## Project Structure
 
