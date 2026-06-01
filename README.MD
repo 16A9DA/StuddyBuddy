@@ -109,6 +109,8 @@ StudyBuddy/
 │   ├── settings.py
 │   └── urls.py
 ├── .gitignore
+└── .Dockerfile               # Docker file to create image and container for deployment
+└── .dockerignore            # files docker need to ignore
 └── manage.py
 ```
 
