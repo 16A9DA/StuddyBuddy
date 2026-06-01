@@ -96,7 +96,7 @@ docker run -d \
   -p 8000:8000 \
   -e SECRET_KEY=yoursecretkey \
   -e DEBUG=False \
-  pa9da/studybuddy
+  pa9da/studdybuddy
 ```
 
 Then open your browser at:
